@@ -1,7 +1,11 @@
 package hello;
 
+
 public class Greeting{
+
+
     private final long id;
+
     private final String content;
 
     public Greeting(long id, String content){
@@ -17,4 +21,5 @@ public class Greeting{
     public String getContent(){
         return this.content;
     }
+
 }
