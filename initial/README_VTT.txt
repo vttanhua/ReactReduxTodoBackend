@@ -16,3 +16,4 @@ lombok
 swagger
 authentication?
 jpa
+structure
