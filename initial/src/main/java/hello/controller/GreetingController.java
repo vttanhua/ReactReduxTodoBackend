@@ -24,4 +24,5 @@ public class GreetingController {
         log.info("Hello World");
         return new Greeting(counter.incrementAndGet(), String.format(template,name));
     }
+
 }

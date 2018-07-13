@@ -12,8 +12,8 @@ https://spring.io/guides/gs/rest-service/
 *	      TODO  		    *
 *						    *
 *****************************
-lombok
-swagger
+*lombok
+*swagger
 authentication?
 jpa
 structure
