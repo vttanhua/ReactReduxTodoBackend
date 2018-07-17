@@ -1,9 +1,10 @@
 package hello;
 
-import hello.repository.UserRepository;
-import jdk.internal.jline.internal.TestAccessible;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -25,14 +26,6 @@ public class UserServiceTest {
     UserService userService;
 
     @Test
-    public void phase2_TestUpdateUser(){
-        log.info("Testing update!");
-        User u = userService.getUserById(1L);
-        u.setPassword("yetAnotherPwd");
-        userService.createOrUpdateUser(u);
-    }
-
-    @Test
     public void phase1_TestCreateUser() throws Exception{
         log.info("Tesing create and update!");
         User u = new User();
@@ -41,11 +34,44 @@ public class UserServiceTest {
         u.setLastName("T-T");
         u.setUserName("vttanhua");
         u.setPassword("pwd");
-        User u2 = userService.createOrUpdateUser(u);
+        User u2 = userService.createOrUpdate(u);
         u2.setPassword("newPassword");
-        TimeUnit.SECONDS.sleep(20);
-        userService.createOrUpdateUser(u2);
+        TimeUnit.SECONDS.sleep(1);
+        userService.createOrUpdate(u2);
     }
 
+    @Test
+    public void phase2_TestUpdateUser(){
+        log.info("Testing update!");
+        User u = userService.getById(1L);
+        u.setPassword("yetAnotherPwd");
+        userService.createOrUpdate(u);
+    }
+
+
+
+    @Test
+    public void phase3_TestGetUserByUserNameAndPassword(){
+        User u = userService.getByUserNameAndPassword("vttanhua", "yetAnotherPwd");
+        assertThat(u.getUserName(),is("vttanhua"));
+        assertThat(u.getPassword(),is("yetAnotherPwd"));
+    }
+
+
+    @Test
+    public void phase4_TestGetUserByUserNameAndPasswordNotFound(){
+        User u = null;
+        try {
+            u = userService.getByUserNameAndPassword("vttanhuaX", "yetAnotherPwd");
+            assertThat(u.getUserName(), is("vttanhuaX"));
+            assertThat(u.getPassword(), is("yetAnotherPwd"));
+        }
+        catch(IllegalArgumentException e){
+            log.error(e.getMessage());
+        }
+        finally{
+            assertNull(u);
+        }
+    }
 
 }

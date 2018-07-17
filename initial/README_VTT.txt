@@ -23,6 +23,20 @@ jpa
 structure
 *logging
 
+
+*****************************
+*	   REST service         *
+*						    *
+*****************************
+https://spring.io/guides/gs/rest-service/
+
+Samples for error handling and using ResponseEntity
+http://websystique.com/spring-boot/spring-boot-rest-api-example/
+
+
+calling article service:
+content-type: application/json
+{"id":1,"title":"Eka artikkeli","createdAt":"2018-07-16T18:40:17.449+0000","modifiedAt":"2018-07-16T18:40:17.449+0000"}
 *****************************
 *	    JPA+Hiberbnate      *
 *		Spring JPA		    *
@@ -77,3 +91,16 @@ lombock project used to get logger by annotation
 *						    *
 *****************************
 initial_tutorial_implemented
+
+
+*****************************
+*	  Other libs     	    *
+*		and tools		    *
+*****************************
+https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax
+import java.util.concurrent.TimeUnit;
+ TimeUnit.SECONDS.sleep(1);
+
+ https://github.com/junit-team/junit4/wiki/matchers-and-assertthat
+ https://junit.org/junit4/javadoc/4.12/org/junit/Assert.html
+ https://examples.javacodegeeks.com/core-java/junit/junit-assertthat-example/
