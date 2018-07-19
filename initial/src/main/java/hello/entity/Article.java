@@ -39,4 +39,12 @@ public class Article {
         return this;
     }
 
+    public Article(){
+
+    }
+
+    public Article(String title){
+        this.title = title;
+    }
+
 }

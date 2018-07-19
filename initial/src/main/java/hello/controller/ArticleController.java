@@ -24,7 +24,7 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @RequestMapping(value="/article/", method = RequestMethod.GET)
+    @RequestMapping(value="/article", method = RequestMethod.GET)
     public ResponseEntity<List<Article>> listAllArticles(){
         log.info("Listing all articles.");
         List<Article> articles = articleService.findAll();
@@ -44,14 +44,13 @@ public class ArticleController {
             log.error("Article with id {} not found. ", id);
             return new ResponseEntity(new Exception("Article with id " + id + " not found!"), HttpStatus.NOT_FOUND);
         }
-        articleService.delete(id);
         return new ResponseEntity<Article>(article, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/article/", method = RequestMethod.POST)
+    @RequestMapping(value="/article", method = RequestMethod.POST)
     public ResponseEntity<?> createArticle(@RequestBody Article article, UriComponentsBuilder ucBuilder){
         log.info("Creating article: {}", article);
-        if(articleService.isExists(article)) {
+        if(!(article.getId()==null) && articleService.isExists(article)) {///TODO should id just be set to null
             log.error("Unable to create article {} already exists", article);
             return new ResponseEntity(new Exception("Unable to create article " + article + " already exists"), HttpStatus.CONFLICT);
         }
@@ -89,7 +88,7 @@ public class ArticleController {
         return new ResponseEntity<Article>(HttpStatus.NO_CONTENT);///TODO Could return deleted id
     }
 
-    @RequestMapping(value = "/article/", method = RequestMethod.DELETE )
+    @RequestMapping(value = "/article", method = RequestMethod.DELETE )
     public ResponseEntity<Article> deleteAllUsers(){
         log.info("Deleting all articles");
         articleService.deleteAll();

@@ -10,6 +10,9 @@ https://spring.io/guides/gs/rest-service/
 good generator for spring projects:
 http://start.spring.io/
 
+spring-boot applicaatio intelliJ:ssä
+add as maven project in project context menu
+file ->settigns ->imports ... automatic import of dep when pom changed.
 
 
 *****************************
@@ -32,6 +35,9 @@ https://spring.io/guides/gs/rest-service/
 
 Samples for error handling and using ResponseEntity
 http://websystique.com/spring-boot/spring-boot-rest-api-example/
+
+good article reference (swagger client, security)
+http://www.baeldung.com/rest-with-spring-series/
 
 
 calling article service:
@@ -70,6 +76,9 @@ Mapped "{[/swagger-resources/configuration/security]}"
 Mapped "{[/swagger-resources/configuration/ui]}"
 Mapped "{[/swagger-resources]}"
 
+
+Swagger client creation:
+http://www.baeldung.com/spring-boot-rest-client-swagger-codegen
 *****************************
 *	      Logging  		    *
 *						    *
@@ -104,3 +113,26 @@ import java.util.concurrent.TimeUnit;
  https://github.com/junit-team/junit4/wiki/matchers-and-assertthat
  https://junit.org/junit4/javadoc/4.12/org/junit/Assert.html
  https://examples.javacodegeeks.com/core-java/junit/junit-assertthat-example/
+
+ -configuration and profiles setup
+ http://www.baeldung.com/configuration-properties-in-spring-boot
+ http://www.springboottutorial.com/spring-boot-profiles
+
+
+ *****************************
+ *	       Tips        	    *
+ *		        		    *
+ *****************************
+
+ 6.3. Client Error
+ In case of a client error, custom exceptions are defined and mapped to the appropriate error
+ codes. Simply throwing these exceptions from any of the layers of the web tier will ensure
+ Spring maps the corresponding status code on the HTTP response.
+ @ResponseStatus( value = HttpStatus.BAD_REQUEST )
+ public class BadRequestException extends RuntimeException{
+ //
+ }
+ @ResponseStatus( value = HttpStatus.NOT_FOUND )
+ public class ResourceNotFoundException extends RuntimeException{
+ //
+ }
