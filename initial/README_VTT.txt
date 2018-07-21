@@ -14,18 +14,24 @@ spring-boot applicaatio intelliJ:ssä
 add as maven project in project context menu
 file ->settigns ->imports ... automatic import of dep when pom changed.
 
+Using different profiles
+Rename prop files like application-{profile}.properties
+use commands to specify profile:
+mvn clean package -Dspring.profiles.active=test
+mvn spring-boot:run -Dspring.profiles.active=production
+
 
 *****************************
 *	      TODO  		    *
 *						    *
 *****************************
-lombok
+-lombok
 *swagger
 authentication?
-jpa
-structure
+-jpa
+-structure
 *logging
-
+transaction tag
 
 *****************************
 *	   REST service         *
