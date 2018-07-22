@@ -21,6 +21,9 @@ mvn clean package -Dspring.profiles.active=test
 mvn spring-boot:run -Dspring.profiles.active=production
 
 
+maven pakettien etsintätyökalu:
+https://mvnrepository.com/artifact/org.springframework.security/spring-security-web/5.0.6.RELEASE
+
 *****************************
 *	      TODO  		    *
 *						    *
@@ -33,6 +36,17 @@ authentication?
 *logging
 transaction tag
 
+*****************************
+*	      CORS   		    *
+*						    *
+*****************************
+vanha tapa tällä sain toimimaan
+https://spring.io/guides/gs/rest-service-cors/
+tämä ei kaipaa kummepia dependencyjä!
+
+uusi tapa olisi
+https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-cors
+mutta en saanut toimimaan
 *****************************
 *	   REST service         *
 *						    *
