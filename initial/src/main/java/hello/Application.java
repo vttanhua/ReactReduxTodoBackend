@@ -33,7 +33,10 @@ public class Application {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:8080").allowedHeaders("*").exposedHeaders("Location");
+                registry.addMapping("/**").
+                        allowedOrigins("http://localhost:8080").allowedHeaders("*")
+                        .allowedMethods("GET, POST, PATCH, PUT, DELETE, OPTIONS")
+                        .exposedHeaders("Location,testHeader,Access-Control-Allow-Origin");//, Access-Control-Allow-Origin
             }
         };
     }

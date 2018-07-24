@@ -24,6 +24,9 @@ mvn spring-boot:run -Dspring.profiles.active=production
 maven pakettien etsintätyökalu:
 https://mvnrepository.com/artifact/org.springframework.security/spring-security-web/5.0.6.RELEASE
 
+spring luokat
+https://www.javatips.net/api/spring-framework-master/spring-webflux/src/main/java/org/springframework/web/reactive/config/WebFluxConfigurer.java
+
 *****************************
 *	      TODO  		    *
 *						    *
@@ -43,6 +46,16 @@ transaction tag
 vanha tapa tällä sain toimimaan
 https://spring.io/guides/gs/rest-service-cors/
 tämä ei kaipaa kummepia dependencyjä!
+tarvitaan myös lupa lukea http headereita
+sample löytyy täältä:
+https://www.concretepage.com/spring-4/spring-4-rest-cors-integration-using-crossorigin-annotation-xml-filter-example
+tarvitaan myös expose headers, jotta voi käsitellä luodun objektin location headerissa tulevaa id:tä
+https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Access-Control-Expose-Headers
+deletelle tarvitaan options metodin määrittely joka palauttaa AccessControlAllowOrigin headerin:
+https://stackoverflow.com/questions/29954037/why-is-an-options-request-sent-and-can-i-disable-it
+
+ehkä crossorigin annotaatiolla tämä homma hoituisi suoraan!
+
 
 uusi tapa olisi
 https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-cors
@@ -82,6 +95,10 @@ https://docs.spring.io/spring-data/jpa/docs/1.5.0.RC1/reference/html/jpa.reposit
 *	      Swagger  		    *
 *						    *
 *****************************
+swagger ja applicationin security ei toimi samaan aikaan
+jos haluaa katsoa swaggeria niin
+public WebMvcConfigurer corsConfigurer() pitää kommentoida pois
+
 Swagger home: https://swagger.io/
 Good concrete sample:
 http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api

@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @Slf4j
@@ -74,6 +74,16 @@ public class ArticleController {
         currentArticle.copy(article);
         this.articleService.createOrUpdate(currentArticle);
         return new ResponseEntity<Article>(currentArticle, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/article/{id}", method = RequestMethod.OPTIONS)
+    public ResponseEntity<?> optionsArticle(@PathVariable("id") long id){
+        log.warn("Options request for article id: "+id+"****************************************");
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setAccessControlAllowOrigin("*");
+        httpHeaders.set("testHeader","testValue");
+        return new ResponseEntity<String>(httpHeaders, HttpStatus.OK);
+
     }
 
     @RequestMapping(value = "/article/{id}", method = RequestMethod.DELETE )
