@@ -27,6 +27,7 @@ public class ArticleController {
 
     @RequestMapping(value="/article", method = RequestMethod.GET)
     public ResponseEntity<List<Article>> listAllArticles(){
+
         log.info("Listing all articles.");
         List<Article> articles = articleService.findAll();
         if(articles.isEmpty()){
