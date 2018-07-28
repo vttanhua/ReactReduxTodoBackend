@@ -34,13 +34,22 @@ public class UserService {
         return this.userRepository.findOne(user).orElseThrow(() -> new IllegalArgumentException(format("UserEntity not found with Example %s", user)));
     }
 
-    public User getByUserNameAndPassword(String userName, String password){
-        ///TODO Password should be crypted
+    public User getByUserName(String userName){
         User u = new User();
         u.setUserName(userName);
-        u.setPassword(password);
         Example<User> eu =  Example.of(u);
         return this.getByExample(eu);
+    }
+
+    public User Authenticate(String userName, String password) {
+        User u = null;
+        try{
+            u = this.getByUserName(userName);
+
+        }catch (IllegalArgumentException ie){
+
+        }
+        return u;
     }
 
 

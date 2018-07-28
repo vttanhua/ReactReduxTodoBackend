@@ -13,10 +13,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
-@EnableWebMvc
-public class WebSecurityConfiguration {//implements WebFluxConfigurer {
+//@Configuration
+//@EnableWebMvc
+public class WebSecurityConfiguration{//implements WebFluxConfigurer {
 /*
     @Override
     public void addCorsMappings(CorsRegistry registry) {

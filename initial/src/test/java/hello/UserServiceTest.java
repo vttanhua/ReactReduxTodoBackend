@@ -52,7 +52,7 @@ public class UserServiceTest {
 
     @Test
     public void phase3_TestGetUserByUserNameAndPassword(){
-        User u = userService.getByUserNameAndPassword("vttanhua", "yetAnotherPwd");
+        User u = userService.Authenticate("vttanhua", "yetAnotherPwd");
         assertThat(u.getUserName(),is("vttanhua"));
         assertThat(u.getPassword(),is("yetAnotherPwd"));
     }
@@ -62,15 +62,14 @@ public class UserServiceTest {
     public void phase4_TestGetUserByUserNameAndPasswordNotFound(){
         User u = null;
         try {
-            u = userService.getByUserNameAndPassword("vttanhuaX", "yetAnotherPwd");
-            assertThat(u.getUserName(), is("vttanhuaX"));
-            assertThat(u.getPassword(), is("yetAnotherPwd"));
+            u = userService.Authenticate("vttanhuaX", "yetAnotherPwd");
+            assertNull(u);
         }
         catch(IllegalArgumentException e){
             log.error(e.getMessage());
         }
         finally{
-            assertNull(u);
+
         }
     }
 
