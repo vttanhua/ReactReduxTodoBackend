@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 
-@CrossOrigin
+@CrossOrigin  ///TODO delete doesn't work without this??
 @RestController
 @RequestMapping("/api")
 @Slf4j

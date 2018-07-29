@@ -2,15 +2,19 @@ package hello.service;
 
 import hello.repository.UserRepository;
 import hello.entity.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Example;
 import java.util.List;
 
 import static java.lang.String.format;
+import static java.util.Collections.emptyList;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     UserRepository userRepository;
 
@@ -36,7 +40,7 @@ public class UserService {
 
     public User getByUserName(String userName){
         User u = new User();
-        u.setUserName(userName);
+        u.setUsername(userName);
         Example<User> eu =  Example.of(u);
         return this.getByExample(eu);
     }
@@ -53,4 +57,11 @@ public class UserService {
     }
 
 
+    @Override
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User u = getByUserName(userName);
+        if(u == null)
+            throw new UsernameNotFoundException(userName);
+        return new org.springframework.security.core.userdetails.User(u.getUsername(), u.getPassword(), emptyList());
+    }
 }

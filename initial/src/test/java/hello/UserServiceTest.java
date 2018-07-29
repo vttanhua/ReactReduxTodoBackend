@@ -32,7 +32,7 @@ public class UserServiceTest {
         u.setFirstName("Vesa");
 
         u.setLastName("T-T");
-        u.setUserName("vttanhua");
+        u.setUsername("vttanhua");
         u.setPassword("pwd");
         User u2 = userService.createOrUpdate(u);
         u2.setPassword("newPassword");
@@ -53,7 +53,7 @@ public class UserServiceTest {
     @Test
     public void phase3_TestGetUserByUserNameAndPassword(){
         User u = userService.Authenticate("vttanhua", "yetAnotherPwd");
-        assertThat(u.getUserName(),is("vttanhua"));
+        assertThat(u.getUsername(),is("vttanhua"));
         assertThat(u.getPassword(),is("yetAnotherPwd"));
     }
 

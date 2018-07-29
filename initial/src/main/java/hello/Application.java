@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -40,10 +40,10 @@ public class Application {
                         .exposedHeaders("Location,testHeader,Access-Control-Allow-Origin");//, Access-Control-Allow-Origin
             }
         };
-    }*/
-
-    //@Bean
-    //public BCryptPasswordEncoder bCryptPasswordEncoder(){
-    //    return new BCryptPasswordEncoder();
-    //}
+    }
+*/
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 }

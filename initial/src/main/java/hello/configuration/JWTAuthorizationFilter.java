@@ -1,5 +1,5 @@
 package hello.configuration;
-/*
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 import io.jsonwebtoken.Jwts;
 import hello.businessobject.SecurityConstants;
-*/
-public class JWTAuthorizationFilter{// extends BasicAuthenticationFilter
-/*
+
+public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
+
     public JWTAuthorizationFilter(AuthenticationManager authenticationManager){
         super(authenticationManager);
     }
@@ -56,5 +56,5 @@ public class JWTAuthorizationFilter{// extends BasicAuthenticationFilter
         }
         return null;
     }
-    */
+
 }

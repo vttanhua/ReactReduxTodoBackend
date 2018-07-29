@@ -1,6 +1,6 @@
 package hello.configuration;
 
-/*
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hello.entity.User;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import hello.businessobject.SecurityConstants;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -20,9 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-*/
-public class JWTAuthenticationFilter {// extends UsernamePasswordAuthenticationFilter
-/*
+
+public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
+
     private AuthenticationManager authenticationManager;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager){
@@ -37,7 +38,7 @@ public class JWTAuthenticationFilter {// extends UsernamePasswordAuthenticationF
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            user.getUserName(), user.getPassword(),
+                            user.getUsername(), user.getPassword(),
                             new ArrayList<>())
             );
         }catch (IOException e){
@@ -51,12 +52,12 @@ public class JWTAuthenticationFilter {// extends UsernamePasswordAuthenticationF
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
         String token = Jwts.builder()
-                .setSubject(((User) auth.getPrincipal()).getUserName())
+                .setSubject(((org.springframework.security.core.userdetails.User) auth.getPrincipal()).getUsername())
                 .setExpiration(new Date(System.currentTimeMillis()+SecurityConstants.EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET.getBytes())
                 .compact();
 
         res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX+token);
     }
-    */
+
 }
