@@ -1,2 +1,8 @@
 Based on tutorial
 https://spring.io/guides/gs/rest-service/
+
+Other main tutorials
+https://spring.io/blog/2011/02/10/getting-started-with-spring-data-jpa/
+http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+https://spring.io/guides/gs/rest-service-cors/
+https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/

@@ -26,7 +26,8 @@ https://mvnrepository.com/artifact/org.springframework.security/spring-security-
 
 spring luokat
 https://www.javatips.net/api/spring-framework-master/spring-webflux/src/main/java/org/springframework/web/reactive/config/WebFluxConfigurer.java
-
+vielä yleisempi
+https://javalibs.com/artifact/io.jsonwebtoken/jjwt?className=io.jsonwebtoken.Jwts
 *****************************
 *	      TODO  		    *
 *						    *
