@@ -1,19 +1,12 @@
 package hello.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Table;
-import javax.persistence.SequenceGenerator;
-import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
-import org.hibernate.annotations.Type;
 
 import lombok.Data;
 
@@ -36,20 +29,24 @@ public class User {
     @Column
     private String username;
     @Column
+    @JsonIgnore
     private String password;
 
-    @Temporal(TemporalType.DATE) private Date lastLogin;
+    @Column(name = "lastlogin")
+    private LocalDateTime lastLogin;
 
     @Column(name = "created_at", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Generated(value = GenerationTime.INSERT)
     @GeneratedValue(generator = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "modified_at", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Generated(value = GenerationTime.ALWAYS)
     @GeneratedValue(generator = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modifiedAt;
+    private  LocalDateTime modifiedAt;
+
+
+
+
 
 }

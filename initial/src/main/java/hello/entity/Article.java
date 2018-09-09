@@ -5,6 +5,7 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -25,14 +26,12 @@ public class Article {
     @Column(name = "created_at", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Generated(value = GenerationTime.INSERT)
     @GeneratedValue(generator = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "modified_at", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Generated(value = GenerationTime.ALWAYS)
     @GeneratedValue(generator = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modifiedAt;
+    private  LocalDateTime modifiedAt;
 
     public Article copy(Article source){
         this.setTitle(source.getTitle());
