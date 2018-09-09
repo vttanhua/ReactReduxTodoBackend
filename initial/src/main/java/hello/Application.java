@@ -20,7 +20,6 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @SpringBootApplication
 public class Application {
-
     @Autowired
     private ApplicationConfiguration cmdbProperties;
     @PostConstruct
